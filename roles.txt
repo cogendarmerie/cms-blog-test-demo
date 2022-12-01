@@ -1,0 +1,6 @@
+0 = visiteur
+1 = commentaire
+2 = redacteur
+3 = moderateur
+4 = gestionnaire
+5 = administrateur total
