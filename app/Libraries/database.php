@@ -19,7 +19,7 @@ class database
 
     function get_data($table=false, $select="*", $where=false, $limit = false)
     {
-        $return ="";
+        $return = null;
         $conn = $this->connect();
         if($limit!=false)
         {
@@ -40,9 +40,15 @@ class database
         $result = $conn->query($sql);
         if($result&&$result->num_rows > 0)
         {
-            while($row = $result->fetch_assoc())
-            {
-                $return = $row;
+            while($row = $result->fetch_assoc()) {
+                if($limit==" LIMIT 1")
+                {
+                    $return = $row;
+                }
+                else
+                {
+                    $return[] = $row;
+                }
             }
         }
         else

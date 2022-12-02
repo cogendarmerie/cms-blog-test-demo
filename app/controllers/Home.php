@@ -5,7 +5,7 @@ class Home
     public function index()
     {
         $routes = new routes();
-        return $routes->view('./app/pages/index.php');
+        return $routes->view('./app/parts/header.php') . $routes->view('./app/pages/index.php');
     }
 
     public function pages($page = false)

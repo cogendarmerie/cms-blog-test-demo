@@ -26,4 +26,19 @@ class AuthAdmin{
         }
         return null;
     }
+
+    public function cansee($level = false)
+    {
+        $session = new session();
+        $routes = new routes();
+        $user = $session->get("user");
+        if($user['role']<$level)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
