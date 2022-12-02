@@ -7,4 +7,9 @@ class Articles
         $routes = new routes();
         return $routes->view("./app/pages/articles/".$articleName.".php");
     }
+
+    public function create(){
+        $routes = new routes();
+        return $routes->view("./app/pages/articles/editor.php");
+    }
 }

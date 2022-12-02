@@ -9,6 +9,7 @@ class routes
         $this->defineroute("/secure/login", "Secure::login");
         $this->defineroute("/secure/signin", "Secure::signin");
         $this->defineroute("/articles/view/(:any)", "Articles::show/$1");
+        $this->defineroute("/articles/create", "Articles::create", "AuthRedactor");
         $this->defineroute("/admin/dash", "Admin::dash", "AuthAdmin");
         $this->defineroute("/(:any)", "Home::pages/$1");
     }
