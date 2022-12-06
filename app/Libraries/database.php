@@ -58,4 +58,43 @@ class database
         $conn->close();
         return $return;
     }
+
+    public function insert($table = false, $data = false)
+    {
+        $items = null;
+        $values = null;
+        foreach($data as $item=>$value)
+        {
+            if($items)
+            {
+                $items = $items . ", " . $item;
+            }
+            else
+            {
+                $items = $item;
+            }
+            if($values)
+            {
+                $values = $values . ", '" . $value."'";
+            }
+            else
+            {
+                $values = "'".$value."'";
+            }
+        }
+        if($items!=null&&$values!=null)
+        {
+            $conn = $this->connect();
+            $sql = "INSERT INTO " . $table . " (".$items.") VALUES (".$values.")";
+            if($conn->query($sql) == TRUE)
+            {
+                echo "added succesfull";
+            }
+            else
+            {
+                echo $conn->error;
+            }
+            $conn->close();
+        }
+    }
 }

@@ -28,6 +28,9 @@ $configuration = $config->storeArray();
     <link rel="stylesheet" href="/assets/css/style.css">
     <!--flaticon cdn-->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <!--tiny cloud-->
+    <script src="https://cdn.tiny.cloud/1/w7hsxboer7ib8nhmztbir0ai2utf10dafkx2lkpemnifllqa/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
@@ -104,7 +107,7 @@ $configuration = $config->storeArray();
                                         <li><a href="/">Home</a></li>
                                         <li><a href="#">Articles</a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">Créer un article</a></li>
+                                                <li><a href="/articles/create">Créer un article</a></li>
                                                 <li><a href="blog_details.html">Lister les articles</a></li>
                                             </ul>
                                         </li>

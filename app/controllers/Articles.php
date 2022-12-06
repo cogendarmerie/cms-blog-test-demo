@@ -10,6 +10,23 @@ class Articles
 
     public function create(){
         $routes = new routes();
-        return $routes->view("./app/pages/articles/editor.php");
+        $articles = new articlesAdministration();
+        if(isset($_POST['action']))
+        {
+            if($_POST['action']=="create")
+            {
+                $data = $_POST;
+                unset($data['action']);
+                if($articles->publish($data['illustrationUrl'], $data['title'], $data['author'], $data['categorie'], $data['article']))
+                {
+                    echo "create";
+                }
+                exit();
+            }
+        }
+        else
+        {
+            return $routes->view("./app/parts/admin/header.php") . $routes->view("./app/pages/articles/editor.php") . $routes->view("./app/parts/admin/footer.php");
+        }
     }
 }

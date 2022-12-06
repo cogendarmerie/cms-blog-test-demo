@@ -3,6 +3,7 @@ require_once "./app/Libraries/database.php";
 require_once "./app/Libraries/Tools.php";
 require_once "./app/conf/routes.php";
 require_once "./app/Libraries/configuration.php";
+require_once "./app/Libraries/articles_administration.php";
 $session = new session();
 $routes = new routes();
 $route = $routes->select_routes();
