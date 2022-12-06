@@ -1,14 +1,5 @@
-# SEVENTEEN FORMATIONS
-## CMS de publications de contenu de formations
-
-
-### Structure
-
--index.php
-- **app**
-  - **config**
-  - **pages**
-- **assets**
+# SEVENTEEN FORMATIONS - TEST
+## CMS de test publications de contenu de formations
 
 
 &c; SEVENTEEN INFORMATIQUE - 2022
