@@ -2,10 +2,12 @@
 require_once "./app/conf/routes.php";
 class Articles
 {
-    public function show($articleName = false)
+
+    public function show($articleId = false)
     {
         $routes = new routes();
-        return $routes->view("./app/pages/articles/".$articleName.".php");
+        $data['articleId'] = $articleId;
+        return $routes->view("./app/parts/header.php") . $routes->view("./app/pages/articles/articleshow.php", $data) . $routes->view("./app/parts/footer.php");
     }
 
     public function create(){

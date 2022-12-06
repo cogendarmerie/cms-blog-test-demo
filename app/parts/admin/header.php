@@ -108,13 +108,6 @@ $configuration = $config->storeArray();
                                         <li><a href="#">Articles</a>
                                             <ul class="submenu">
                                                 <li><a href="/articles/create">Créer un article</a></li>
-                                                <li><a href="blog_details.html">Lister les articles</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Utilisateurs</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Créer un utilisateur</a></li>
-                                                <li><a href="blog_details.html">Lister les utilisateurs</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="/">Configuration</a></li>

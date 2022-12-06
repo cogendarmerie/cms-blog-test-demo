@@ -17,42 +17,35 @@ class database
         return $conn;
     }
 
-    function get_data($table=false, $select="*", $where=false, $limit = false)
+    function get_data($table = false, $select = "*", $where = false, $limit = false, $order = false, $orderby = false)
     {
         $return = null;
         $conn = $this->connect();
-        if($limit!=false)
-        {
+        if ($limit != false) {
             $limit = " LIMIT " . $limit;
-        }
-        else
-        {
+        } else {
             $limit = "";
         }
-        if($where==false)
-        {
-            $sql = "SELECT " . $select . " FROM " . $table . $limit;
+        if ($order != false && $orderby != false) {
+            $order = " ORDER BY " . $orderby ." ". $order;
+        } else {
+            $order = "";
         }
-        else
-        {
-            $sql = "SELECT " . $select . " FROM " . $table . " WHERE " . $where . $limit;
+        if ($where == false) {
+            $sql = "SELECT " . $select . " FROM " . $table . $limit;
+        } else {
+            $sql = "SELECT " . $select . " FROM " . $table . " WHERE " . $where . $order . $limit;
         }
         $result = $conn->query($sql);
-        if($result&&$result->num_rows > 0)
-        {
-            while($row = $result->fetch_assoc()) {
-                if($limit==" LIMIT 1")
-                {
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if ($limit == " LIMIT 1") {
                     $return = $row;
-                }
-                else
-                {
+                } else {
                     $return[] = $row;
                 }
             }
-        }
-        else
-        {
+        } else {
             $return = 0;
         }
         $conn->close();
@@ -63,38 +56,29 @@ class database
     {
         $items = null;
         $values = null;
-        foreach($data as $item=>$value)
-        {
-            if($items)
-            {
+        foreach ($data as $item => $value) {
+            if ($items) {
                 $items = $items . ", " . $item;
-            }
-            else
-            {
+            } else {
                 $items = $item;
             }
-            if($values)
-            {
-                $values = $values . ", '" . $value."'";
-            }
-            else
-            {
-                $values = "'".$value."'";
+            if ($values) {
+                $values = $values . ", '" . $value . "'";
+            } else {
+                $values = "'" . $value . "'";
             }
         }
-        if($items!=null&&$values!=null)
-        {
+        if ($items != null && $values != null) {
             $conn = $this->connect();
-            $sql = "INSERT INTO " . $table . " (".$items.") VALUES (".$values.")";
-            if($conn->query($sql) == TRUE)
-            {
+            $sql = "INSERT INTO " . $table . " (" . $items . ") VALUES (" . $values . ")";
+            if ($conn->query($sql) == TRUE) {
                 echo "added succesfull";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
             }
-            else
-            {
-                echo $conn->error;
-            }
+
             $conn->close();
         }
     }
 }
+ 

@@ -149,12 +149,42 @@ class routes
         exit();
     }
 
-    public function view($page = false)
+    public function includeWV($filePath = false, $variables = array(), $print = true)
+    {
+        $output = NULL;
+        if(file_exists($filePath)){
+            // Extract the variables to a local namespace
+            extract($variables);
+
+            // Start output buffering
+            ob_start();
+
+            // Include the template file
+            include $filePath;
+
+            // End buffering and return its contents
+            $output = ob_get_clean();
+        }
+        if ($print) {
+            print $output;
+        }
+        return $output;
+
+    }
+
+    public function view($page = false, $variables = false)
     {
         if($page==false)
         {
             return 0;
             exit();
+        }
+        if($variables!=false)
+        {
+            foreach($variables as $item=>$value)
+            {
+                ${$item} = $value;
+            }
         }
         return include($page);
     }

@@ -12,6 +12,10 @@ $user = $session->get("user");
                     <form action="" method="POST">
                         <input type="hidden" name="action" value="create">
                         <div class="row p-3 mb-1">
+                            <label for="title" class="form-label">URL de l'image d'Illustration</label>
+                            <input type="text" name="illustrationUrl" placeholder="https://example.com/assets/demo.jpg" class="form-control">
+                        </div>
+                        <div class="row p-3 mb-1">
                             <label for="title" class="form-label">Titre de la publication</label>
                             <input type="text" name="title" placeholder="Super titre d'inforation" class="form-control">
                         </div>
